@@ -6,7 +6,7 @@ export async function onRequest({ request, env }) {
     if (env.CLOUDFLARE_WEBSITE_WHITELIST) {
       const websiteArr = env.CLOUDFLARE_WEBSITE_WHITELIST.split("|");
       const currentWebsite = websiteArr.find(i => i.includes(website) && i.includes(host));
-      if (!currentWebsite) return Response.json({ success: false, message: "当前网站不在白名单内" }, { headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type" } });
+      if (!currentWebsite) return Response.json({ success: false, message: "not allowed ." }, { headers: { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type" } });
     }
     // UA
     const userAgent = request.headers.get("user-agent") || undefined;
